@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import "./userform.css";
 
 const UserForm = ({ addUser, updateUser, userData, setUserData }) => {
   //error message State
@@ -69,35 +70,47 @@ const UserForm = ({ addUser, updateUser, userData, setUserData }) => {
   };
 
   return (
-    <form onSubmit={submitForm}>
+    <div className="form-cont">
       <h1>user management</h1>
-      <input
-        type="text"
-        placeholder="name"
-        required
-        name="username"
-        onChange={inputHandler}
-        value={userData.username}
-      />
-      <input
-        type="email"
-        placeholder="email"
-        required
-        name="email"
-        onChange={inputHandler}
-        value={userData.email}
-      />
-      <input
-        type="tel"
-        placeholder="phone"
-        required
-        name="phone"
-        onChange={inputHandler}
-        value={userData.phone}
-      />
-      <button type="submit">{userData.id ? "Update" : "Add"}</button>
-      {errorMsg && alert(errorMsg)}
-    </form>
+      <form className="form" onSubmit={submitForm}>
+        <input
+          type="text"
+          placeholder="name"
+          required
+          name="username"
+          onChange={inputHandler}
+          value={userData.username}
+        />
+        <input
+          type="email"
+          placeholder="email"
+          required
+          name="email"
+          onChange={inputHandler}
+          value={userData.email}
+        />
+        <input
+          type="tel"
+          placeholder="phone"
+          required
+          name="phone"
+          onChange={inputHandler}
+          value={userData.phone}
+        />
+        <button className="add-update-btn" type="submit">
+          {userData.id ? (
+            <>
+              Update <ion-icon name="create-outline"></ion-icon>
+            </>
+          ) : (
+            <>
+              Add <ion-icon name="add-circle-outline"></ion-icon>{" "}
+            </>
+          )}
+        </button>
+        {errorMsg && alert(errorMsg)}
+      </form>
+    </div>
   );
 };
 
