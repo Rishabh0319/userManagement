@@ -44,7 +44,7 @@ const UserForm = ({ addUser, updateUser, userData, setUserData }) => {
       return;
     }
     if (!isValidPhone(userData.phone)) {
-      setErrorMsg("Pheat Enter VAlid Phone number");
+      setErrorMsg("Please Enter Valid Phone number");
       return;
     }
 

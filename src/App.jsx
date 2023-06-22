@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import UserForm from "./components/UserForm.jsx";
-import { useState } from "react";
+import UserList from "./components/UserList";
 
 const App = () => {
   // State for save the record of Users Data
@@ -33,6 +33,14 @@ const App = () => {
     });
   };
 
+  const editUser = (user) => {
+    setUserData(user);
+  };
+
+  const deleteUser = (userId) => {
+    setUsers(users.filter((user) => user.id !== userId));
+  };
+
   return (
     <>
       <UserForm
@@ -41,6 +49,7 @@ const App = () => {
         userData={userData}
         setUserData={setUserData}
       />
+      <UserList editUser={editUser} deleteUser={deleteUser} users={users} />
     </>
   );
 };
